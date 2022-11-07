@@ -1,0 +1,13 @@
+package libraryapigit.libraryapigit;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class LibraryApiGitApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(LibraryApiGitApplication.class, args);
+	}
+
+}
