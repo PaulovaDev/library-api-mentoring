@@ -1,6 +1,5 @@
 package libraryapigit.libraryapigit.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 import libraryapigit.libraryapigit.model.Book;
 import libraryapigit.libraryapigit.repositories.BookRepository;
@@ -21,7 +20,6 @@ public class BookController {
     this.bookRepository = bookRepository;
 
   }
-
   @RequestMapping(value = "/books", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
   public @ResponseBody Book registerNewBook(@RequestBody Book newBook) {
     return bookRepository.save(newBook);
