@@ -60,6 +60,16 @@ public class BookController {
 
   }
 
+  @RequestMapping(value = "/books/{id}", method = RequestMethod.DELETE)
+  public void deleteBookById(@PathVariable String id) {
+
+    long bookId = Long.parseLong(id);
+
+    bookRepository.deleteById(bookId);
+  }
+
+
+
 
 
 
