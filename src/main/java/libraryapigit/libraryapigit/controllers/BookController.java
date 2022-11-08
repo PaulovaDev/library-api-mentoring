@@ -44,6 +44,22 @@ public class BookController {
     return book;
   }
 
+  @RequestMapping(value = "/books/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+  public @ResponseBody Optional<Book> updateBookById(@PathVariable String id, @RequestBody Book newBookDetails) {
+
+    long bookId = Long.parseLong(id);
+
+    return bookRepository.findById(bookId).map(book-> {
+      book.setTitle(newBookDetails.getTitle());
+      book.setAuthor(newBookDetails.getAuthor());
+      book.setCopiesAvailable(newBookDetails.getCopiesAvailable());
+      book.setCopiesBorrowed(newBookDetails.getCopiesBorrowed());
+
+      return bookRepository.save(book);
+    } );
+
+  }
+
 
 
 

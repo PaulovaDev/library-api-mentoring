@@ -41,7 +41,6 @@ public class UserController {
     Optional<User> user = userRepository.findById(userId);
 
     return user;
-
   }
 
 }
