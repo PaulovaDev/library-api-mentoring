@@ -56,4 +56,12 @@ public class UserController {
     });
   }
 
+  @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
+  public void deleteUserById(@PathVariable String id) {
+
+    long userId = Long.parseLong(id);
+
+    userRepository.deleteById(userId);
+  }
+
 }
