@@ -43,6 +43,19 @@ public class BorrowedBookController {
     return borrowedBook;
   }
 
+  // user and book should be modified from their controllers. Might delete later
+  @RequestMapping(value = "/borrowed-books/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+  public @ResponseBody Optional<BorrowedBook> updateBorrowedBookById(@PathVariable String id, @RequestBody BorrowedBook newBorrowedBookDetails) {
 
+    long borrowedBookId = Long.parseLong(id);
+
+    return borrowedBookRepository.findById(borrowedBookId).map(borrowedBook -> {
+
+      borrowedBook.setUser(newBorrowedBookDetails.getUser());
+      borrowedBook.setBook(newBorrowedBookDetails.getBook());
+
+      return borrowedBookRepository.save(borrowedBook);
+    });
+  }
 
 }
