@@ -56,7 +56,7 @@ public class BookController {
       book.setCopiesBorrowed(newBookDetails.getCopiesBorrowed());
 
       return bookRepository.save(book);
-    } );
+    });
 
   }
 

@@ -43,4 +43,17 @@ public class UserController {
     return user;
   }
 
+  @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+  public @ResponseBody Optional<User> updateUserById(@PathVariable String id, @RequestBody User newUserDetails) {
+
+    long userId = Long.parseLong(id);
+
+    return userRepository.findById(userId).map(user-> {
+      user.setName(newUserDetails.getName());
+      user.setSurname(newUserDetails.getSurname());
+
+      return userRepository.save(user);
+    });
+  }
+
 }
