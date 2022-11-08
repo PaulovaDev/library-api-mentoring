@@ -58,4 +58,13 @@ public class BorrowedBookController {
     });
   }
 
+  @RequestMapping(value = "/borrowed-books/{id}", method = RequestMethod.DELETE)
+  public void deleteBorrowedBookById(@PathVariable String id) {
+
+    long borrowedBookId = Long.parseLong(id);
+
+    borrowedBookRepository.deleteById(borrowedBookId);
+
+  }
+
 }
